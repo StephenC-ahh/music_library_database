@@ -1,15 +1,11 @@
 <html>
-<head></head>
-<body>
-  <h1>Artists</h1>
-
-  <div>
-  <% @artists.each do |artist| %>
-  <p>--------------------------------------</p>
-  <h2>Artist: <a href='/artists/<%=artist.id%>'> <%=artist.name%> </a> </h2>
-  <p> Genre: <%= artist.genre%></p>
-
-  <% end %>
-  </div>
-</body>
+  <head></head>
+  <body>
+    <h1>Artists</h1>
+    <div><% @artists.each do |artist| %> <p>--------------------------------------</p>
+      <h2>Artist: <a href='/artists/<%=artist.id%>'><%=artist.name%> </a>
+      </h2>
+      <p> Genre: <%= artist.genre%> </p><% end %>
+    </div>
+  </body>
 </html>
