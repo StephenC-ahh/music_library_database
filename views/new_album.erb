@@ -1,26 +1,36 @@
 <html>
+<body>
+    <style>
+      body {
+        background-image: url('https://imageio.forbes.com/specials-images/imageserve/5ff65598fd7da41cbdf3f037/the-mockup-template-with-the-new-vinyl-disc-on-color-surface--music-album-cover/960x0.jpg?format=jpg&width=960');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+      }
+    </style>
   <h1>Please type the details of the Album you would like to add</h1>
-  <form action="/albums" method="POST">
+  <form method='post' action='/albums'>
     <div>
       <p>
         <label>Album Title</label>
-        <input type="text" name="title">
+        <input type='text' name='title'>
       </p>
     </div>
     <div>
       <p>
         <label>Release Year:</label>
-        <input type="text" name="release_year">
+        <input type='text' name='release_year'>
       </p>
     </div>
     <div>
       <p>
-        <label>Release Year:</label>
-        <input type="text" name="artist_id">
+        <label>Artist ID:</label>
+        <input type='text' name='artist_id'>
       </p>
     </div>
     <p>
-      <input type="submit" value="submit the form">
+      <input type='submit' value='submit the form'>
     </p>
   </form>
+  </body>
   <html>
