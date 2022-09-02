@@ -83,9 +83,7 @@ describe Application do
       expect(response.body).to include 'Voyage'
     end
   end
-
-  
-
+    
   context 'Get /artists/:id' do
     it 'should return info about artist 1' do
       response = get('/artists/1')
@@ -168,15 +166,32 @@ describe Application do
   #   end
   # end
 
-#   context 'POST /artists' do
-#     it 'creates a new artist' do
-#       response = post('/artists', name: "Wild Nothing", genre: "Indie")
+  context 'GET /artists/new' do
+    it "returns the HTML form to create a new artist" do
+      response = get('/artists/new')
+      expect(response.status).to eq 200
+      expect(response.body).to include("<form action='/artists' method='POST'>")
+      expect(response.body).to include("<input type='text' name='name'>")
+      expect(response.body).to include("<input type='text' name='genre'>")
+    end
+  end
 
-#       expect(response.status).to eq 200
-#       expect(response.body).to eq ''
+  context 'GET /artists' do
+    it 'should validate artist parameters' do
+      response = post('/artists', invalid_name: 'Weezer', invalid_genre: 'cowboy punk')
+      expect(response.status).to eq 400
+    end
+  end
 
-#       response = get('/artists')
-#       expect(response.body).to include 'Wild Nothing'
-#     end
-#   end
+  context 'POST /artists' do
+    it 'creates a new artist' do
+      response = post('/artists', name: "Wild Nothing", genre: "Indie")
+
+      expect(response.status).to eq 200
+      expect(response.body).to eq ''
+
+      response = get('/artists')
+      expect(response.body).to include 'Wild Nothing'
+    end
+  end
 end
