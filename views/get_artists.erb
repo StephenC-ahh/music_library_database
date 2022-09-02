@@ -1,6 +1,14 @@
 <html>
   <head></head>
   <body>
+  <style>
+      body {
+        background-image: url('https://imageio.forbes.com/specials-images/imageserve/5ff65598fd7da41cbdf3f037/the-mockup-template-with-the-new-vinyl-disc-on-color-surface--music-album-cover/960x0.jpg?format=jpg&width=960');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+      }
+    </style>
     <h1>Artists</h1>
     <div><% @artists.each do |artist| %> <p>--------------------------------------</p>
       <h2>Artist: <a href='/artists/<%=artist.id%>'><%=artist.name%> </a>
