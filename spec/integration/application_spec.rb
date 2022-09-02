@@ -53,6 +53,16 @@ describe Application do
       expect(response.body).to include ('Artist: Pixies')
     end
   end
+  context "GET /albums/new" do
+    it "returns the HTML form to create a new album" do
+      response = get('/albums/new')
+      expect(response.status).to eq(200)
+      expect(response.body).to include("<form method='post' action='/albums'>")
+      expect(response.body).to include("<input type='text' name='title'>")
+      expect(response.body).to include("<input type='text' name='release_year'>")
+      expect(response.body).to include("<input type='text' name='artist_id'>")
+    end
+  end
 
   context 'POST /albums' do
     it 'should validate album parameters' do
@@ -74,16 +84,7 @@ describe Application do
     end
   end
 
-  context "GET /albums/new" do
-    it "returns the HTML form to create a new album" do
-      response = get('/albums/new')
-      expect(response.status).to eq(200)
-      expect(response.body).to include("<form method='POST' action='/albums'>")
-      expect(response.body).to include("<input type='text' name='title'/>")
-      expect(response.body).to include("<input type='text' name='release_year'/>")
-      expect(response.body).to include("<input type='text' name='artist_id'/>")
-    end
-  end
+  
 
   context 'Get /artists/:id' do
     it 'should return info about artist 1' do
@@ -167,15 +168,15 @@ describe Application do
   #   end
   # end
 
-  context 'POST /artists' do
-    it 'creates a new artist' do
-      response = post('/artists', name: "Wild Nothing", genre: "Indie")
+#   context 'POST /artists' do
+#     it 'creates a new artist' do
+#       response = post('/artists', name: "Wild Nothing", genre: "Indie")
 
-      expect(response.status).to eq 200
-      expect(response.body).to eq ''
+#       expect(response.status).to eq 200
+#       expect(response.body).to eq ''
 
-      response = get('/artists')
-      expect(response.body).to include 'Wild Nothing'
-    end
-  end
+#       response = get('/artists')
+#       expect(response.body).to include 'Wild Nothing'
+#     end
+#   end
 end
