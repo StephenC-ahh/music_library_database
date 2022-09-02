@@ -87,6 +87,7 @@ class Application < Sinatra::Base
     new_artist.genre = params[:genre]
     repo.create(new_artist)
     return ''
+    # return erb(:index)
   end
 end
 
